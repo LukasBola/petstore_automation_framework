@@ -16,9 +16,8 @@ public class LoginTests {
     private WebDriver driver;
     String petStoreUrl = "http://przyklady.javastart.pl/jpetstore/";
 
-
     @BeforeMethod
-    public void beforeTest(){
+    public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", "C:/_luke/_test/chromedriver_win32_79/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -26,7 +25,7 @@ public class LoginTests {
     }
 
     @AfterMethod
-    public void afterTest(){
+    public void afterTest() {
         driver.close();
         driver.quit();
     }
@@ -40,47 +39,35 @@ public class LoginTests {
     }
 
     @Test
-    public void asUserTryToLogInWithIncorrectLoginAndPassword(){
-        WebElement enterStoreLink =  driver.findElement(By.cssSelector("#Content a"));
-        enterStoreLink.click();
+    public void asUserTryToLogInWithIncorrectLoginAndPassword() {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.clickOnEnterStoreLink();
 
-        WebElement signInLink = driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']"));
-        signInLink.click();
+        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        topMenuPage.clickOnSignInLink();
 
-        WebElement usernameField = driver.findElement(By.cssSelector("#Catalog input[name*='username']"));
-        usernameField.clear();
-        usernameField.sendKeys("invalidUserName");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeIntoUsernameField("invalidUsername");
+        loginPage.typeIntoPasswordField("inavalidPassword");
+        loginPage.clickLoginButton();
 
-        WebElement passwordField = driver.findElement(By.cssSelector("#Catalog input[name*='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("invalidPassword");
-
-        WebElement loginButton = driver.findElement(By.cssSelector("#Catalog input[name*='signon']"));
-        loginButton.click();
-
-        String message = driver.findElement(By.cssSelector("#Content li")).getText();
-
-        assertEquals(message, "Invalid username or password. Signon failed.");
+        assertEquals(loginPage.getWarningMessage(), "Invalid username or password. Signon failed.");
     }
 
     @Test
-    public void asUserLogInUsingValidLoginAndPassword(){
-        WebElement enterStoreLink =  driver.findElement(By.cssSelector("#Content a"));
-        enterStoreLink.click();
+    public void asUserLogInUsingValidLoginAndPassword() {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.clickOnEnterStoreLink();
 
-        WebElement signInLink = driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']"));
-        signInLink.click();
+        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        topMenuPage.clickOnSignInLink();
 
-        WebElement usernameField = driver.findElement(By.cssSelector("#Catalog input[name*='username']"));
-        usernameField.clear();
-        usernameField.sendKeys("j2ee");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("#Catalog input[name*='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("j2ee");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeIntoUsernameField("j2ee");
+        loginPage.typeIntoPasswordField("j2ee");
+        loginPage.clickLoginButton();
 
         WebElement bannerAfterLogin = driver.findElement(By.id("Banner"));
         assertTrue(bannerAfterLogin.isDisplayed());
-
     }
 }
