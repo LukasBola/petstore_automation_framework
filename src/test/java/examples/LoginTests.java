@@ -1,10 +1,7 @@
 package examples;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -68,7 +65,7 @@ public class LoginTests {
         loginPage.typeIntoPasswordField("j2ee");
         loginPage.clickLoginButton();
 
-        WebElement bannerAfterLogin = driver.findElement(By.id("Banner"));
-        assertTrue(bannerAfterLogin.isDisplayed());
+        FooterPage footerPage = new FooterPage(driver);
+        assertTrue(footerPage.isBannerAfterLoginIsDisplayed());
     }
 }
