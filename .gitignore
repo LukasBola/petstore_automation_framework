@@ -26,4 +26,4 @@ hs_err_pid*
 .idea
 *.iml
 target/*
-*/TestSettings.java
+src/test/java/examples/TestSettings.java
