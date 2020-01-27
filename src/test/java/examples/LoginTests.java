@@ -2,9 +2,7 @@ package examples;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
@@ -13,13 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class LoginTests {
     private WebDriver driver;
     String petStoreUrl = "http://przyklady.javastart.pl/jpetstore/";
+    TestSettings testSettings = new TestSettings();
 
     @BeforeMethod
     public void beforeTest() {
-        System.setProperty("webdriver.chrome.driver", "C:/_luke/_test/chromedriver_win32_79/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", testSettings.chromePath);
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.navigate().to(petStoreUrl);
     }
 
     @AfterMethod
@@ -38,6 +36,7 @@ public class LoginTests {
 
     @Test
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
+        driver.navigate().to(petStoreUrl);
         LandingPage landingPage = new LandingPage(driver);
         landingPage.clickOnEnterStoreLink();
 
@@ -54,6 +53,7 @@ public class LoginTests {
 
     @Test
     public void asUserLogInUsingValidLoginAndPassword() {
+        driver.navigate().to(petStoreUrl);
         LandingPage landingPage = new LandingPage(driver);
         landingPage.clickOnEnterStoreLink();
 
@@ -67,5 +67,7 @@ public class LoginTests {
 
         FooterPage footerPage = new FooterPage(driver);
         assertTrue(footerPage.isBannerAfterLoginIsDisplayed());
+
+        topMenuPage.clickOnSignOutLink();
     }
 }

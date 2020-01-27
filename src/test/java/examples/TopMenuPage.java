@@ -11,6 +11,9 @@ public class TopMenuPage {
     @FindBy (css = "#MenuContent a[href*='signonForm']")
     WebElement signInLink;
 
+    @FindBy (css = "#MenuContent a[href*='signoff']")
+    WebElement signOutLink;
+
     private WebDriver driver;
 
     public TopMenuPage(WebDriver driver){
@@ -20,5 +23,9 @@ public class TopMenuPage {
 
     public void clickOnSignInLink() {
         signInLink.click();
+    }
+
+    public void clickOnSignOutLink(){
+        signOutLink.click();
     }
 }
