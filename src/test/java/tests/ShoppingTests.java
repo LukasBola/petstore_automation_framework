@@ -14,6 +14,7 @@ public class ShoppingTests extends TestBase{
 
         TopMenuPage topMenuPage = new TopMenuPage(driver);
         topMenuPage.clickOnQuickFishMenu();
+        sleep();
 
     }
 }
