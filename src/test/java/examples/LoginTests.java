@@ -1,5 +1,6 @@
 package examples;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -11,11 +12,10 @@ import java.util.concurrent.TimeUnit;
 public class LoginTests {
     private WebDriver driver;
     String petStoreUrl = "http://przyklady.javastart.pl/jpetstore/";
-    TestSettings testSettings = new TestSettings();
 
     @BeforeMethod
     public void beforeTest() {
-        System.setProperty("webdriver.chrome.driver", testSettings.chromePath);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
