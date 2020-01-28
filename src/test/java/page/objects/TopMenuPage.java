@@ -14,6 +14,11 @@ public class TopMenuPage {
     @FindBy (css = "#MenuContent a[href*='signoff']")
     WebElement signOutLink;
 
+    @FindBy(css = "#QuickLinks img[src*='fish']")
+    WebElement  quickFishMenu;
+//    klikam fish
+
+
     private WebDriver driver;
 
     public TopMenuPage(WebDriver driver){
@@ -27,5 +32,9 @@ public class TopMenuPage {
 
     public void clickOnSignOutLink(){
         signOutLink.click();
+    }
+
+    public void clickOnQuickFishMenu(){
+        quickFishMenu.click();
     }
 }
