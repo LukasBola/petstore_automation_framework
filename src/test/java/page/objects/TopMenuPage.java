@@ -16,8 +16,6 @@ public class TopMenuPage {
 
     @FindBy(css = "#QuickLinks img[src*='fish']")
     WebElement  quickFishMenu;
-//    klikam fish
-
 
     private WebDriver driver;
 
