@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AngelfishListPage {
 
-    @FindBy(css = "#Content a[href *='ItemId=EST-2']")
+    @FindBy(css = "a.Button[href$='EST-2']")
     WebElement smallAngelFishAddToCartButton;
 
     public WebDriver driver;
