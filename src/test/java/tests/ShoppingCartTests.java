@@ -1,6 +1,5 @@
 package tests;
 
-import driver.manager.DriverUtils;
 import org.testng.annotations.Test;
 import page.objects.*;
 
