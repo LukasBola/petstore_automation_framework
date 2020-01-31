@@ -1,5 +1,6 @@
 package tests;
 
+import driver.manager.DriverUtils;
 import org.testng.annotations.Test;
 import page.objects.*;
 
@@ -9,23 +10,22 @@ public class ShoppingCartTests extends TestBase {
 
     @Test
     public void addSmallAngelFishToTheCartWithoutLoginIn() {
-        driver.navigate().to(petStoreUrl);
-        LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage();
         landingPage.clickOnEnterStoreLink();
 
-        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        TopMenuPage topMenuPage = new TopMenuPage();
         topMenuPage.clickOnQuickFishMenu();
 
-        FishListPage fishListPage = new FishListPage(driver);
+        FishListPage fishListPage = new FishListPage();
         fishListPage.clickOnAngelFishId();
 
-        AngelfishListPage angelfishListPage = new AngelfishListPage(driver);
+        AngelfishListPage angelfishListPage = new AngelfishListPage();
         angelfishListPage.clickOnSmallAngelFishAddToCartButton();
 
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.clickOnProceedToCheckOutButton();
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         String warningMessage = loginPage.getWarningMessage();
         assertEquals(warningMessage, "You must sign on before attempting to check out. Please sign on and try checking out again.");
     }

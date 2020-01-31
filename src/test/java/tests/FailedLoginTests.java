@@ -1,5 +1,6 @@
 package tests;
 
+import driver.manager.DriverUtils;
 import org.testng.annotations.*;
 import page.objects.LandingPage;
 import page.objects.LoginPage;
@@ -11,14 +12,13 @@ public class FailedLoginTests extends TestBase {
 
     @Test
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
-        driver.navigate().to(petStoreUrl);
-        LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage();
         landingPage.clickOnEnterStoreLink();
 
-        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        TopMenuPage topMenuPage = new TopMenuPage();
         topMenuPage.clickOnSignInLink();
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.typeIntoUsernameField("invalidUsername");
         loginPage.typeIntoPasswordField("inavalidPassword");
         loginPage.clickLoginButton();

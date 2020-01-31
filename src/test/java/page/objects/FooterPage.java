@@ -1,5 +1,6 @@
 package page.objects;
 
+import driver.manager.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,11 +12,8 @@ public class FooterPage {
     @FindBy (id = "Banner")
     WebElement bannerAfterLogin;
 
-    private WebDriver driver;
-
-    public FooterPage (WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public FooterPage (){
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public boolean isBannerAfterLoginIsDisplayed(){

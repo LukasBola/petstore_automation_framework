@@ -1,5 +1,6 @@
 package page.objects;
 
+import driver.manager.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,11 +18,8 @@ public class TopMenuPage {
     @FindBy(css = "#QuickLinks img[src*='fish']")
     WebElement  quickFishMenu;
 
-    private WebDriver driver;
-
-    public TopMenuPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public TopMenuPage(){
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void clickOnSignInLink() {
