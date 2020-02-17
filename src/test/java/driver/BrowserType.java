@@ -4,7 +4,7 @@ public enum BrowserType {
 
     FIREFOX("firefox"),
     CHROME("chrome"),
-    IE("internetexplorer");
+    EDGE("microsoft edge");
 
     private final String browser;
 
@@ -12,3 +12,4 @@ public enum BrowserType {
         this.browser = browser;
     }
 }
+
