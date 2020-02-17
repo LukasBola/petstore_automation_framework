@@ -1,5 +1,7 @@
 package driver.manager;
 
+import driver.BrowserFactory;
+import driver.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,8 +15,7 @@ public class DriverManager {
 
     public static WebDriver getWebDriver() {
         if (driver == null) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver = BrowserFactory.getBrowser(BrowserType.FIREFOX);
         }
         return driver;
     }
