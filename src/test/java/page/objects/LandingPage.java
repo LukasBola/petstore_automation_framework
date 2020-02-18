@@ -23,5 +23,6 @@ public class LandingPage {
     public void clickOnEnterStoreLink() {
         WaitForElement.waitUntilElementIsClickable(enterStoreLink);
         enterStoreLink.click();
+        logger.info("Clicked on enter store link.");
     }
 }
