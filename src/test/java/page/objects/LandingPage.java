@@ -6,7 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitForElement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class LandingPage {
+
+    private Logger logger = LogManager.getRootLogger();
 
     @FindBy(css = "#Content a")
     WebElement enterStoreLink;
