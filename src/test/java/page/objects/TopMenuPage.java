@@ -25,21 +25,24 @@ public class TopMenuPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void clickOnSignInLink() {
+    public LoginPage clickOnSignInLink() {
         WaitForElement.waitUntilElementIsClickable(signInLink);
         signInLink.click();
         logger.info("Clicked on Sign In link at Top Page Menu.");
+        return new LoginPage();
     }
 
-    public void clickOnSignOutLink(){
+    public LoginPage clickOnSignOutLink(){
         WaitForElement.waitUntilElementIsClickable(signOutLink);
         signOutLink.click();
         logger.info("Clicked on Sign Out link at Top Page Menu.");
+        return new LoginPage();
     }
 
-    public void clickOnQuickFishMenu(){
+    public FishListPage clickOnQuickFishMenu(){
         WaitForElement.waitUntilElementIsClickable(quickFishMenu);
         quickFishMenu.click();
         logger.info("Clicked on quick Fish Menu link at the Top Page Menu.");
+        return new FishListPage();
     }
 }

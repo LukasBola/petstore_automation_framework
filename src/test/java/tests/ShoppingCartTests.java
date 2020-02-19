@@ -10,19 +10,12 @@ public class ShoppingCartTests extends TestBase {
     @Test
     public void addSmallAngelFishToTheCartWithoutLoginIn() {
         LandingPage landingPage = new LandingPage();
-        landingPage.clickOnEnterStoreLink();
-
-        TopMenuPage topMenuPage = new TopMenuPage();
-        topMenuPage.clickOnQuickFishMenu();
-
-        FishListPage fishListPage = new FishListPage();
-        fishListPage.clickOnAngelFishId();
-
-        AngelfishListPage angelfishListPage = new AngelfishListPage();
-        angelfishListPage.clickOnSmallAngelFishAddToCartButton();
-
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        shoppingCartPage.clickOnProceedToCheckOutButton();
+        landingPage
+                .clickOnEnterStoreLink()
+                .clickOnQuickFishMenu()
+                .clickOnAngelFishId()
+                .clickOnSmallAngelFishAddToCartButton()
+                .clickOnProceedToCheckOutButton();
 
         LoginPage loginPage = new LoginPage();
         String warningMessage = loginPage.getWarningMessage();

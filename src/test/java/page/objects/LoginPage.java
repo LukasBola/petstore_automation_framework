@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import sun.rmi.runtime.Log;
 import waits.WaitForElement;
 
 public class LoginPage {
@@ -28,22 +29,25 @@ public class LoginPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void typeIntoUsernameField(String username) {
+    public LoginPage typeIntoUsernameField(String username) {
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.clear();
         usernameField.sendKeys(username);
         logger.info("Typed user name: '{}' in username field.", username);
+        return this;
     }
 
-    public void typeIntoPasswordField(String password) {
+    public LoginPage typeIntoPasswordField(String password) {
         passwordField.clear();
         passwordField.sendKeys(password);
         logger.info("Typed password: '{}' in password field.", password);
+        return this;
     }
 
-    public void clickLoginButton() {
+    public FooterPage clickLoginButton() {
         loginButton.click();
         logger.info("Clicked Login button at the login page.");
+        return new FooterPage();
     }
 
     public String getWarningMessage() {
