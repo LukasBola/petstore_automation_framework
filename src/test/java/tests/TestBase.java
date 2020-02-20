@@ -5,16 +5,16 @@ import driver.manager.DriverUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class TestBase {
+import static navigation.ApplicationURLs.APPLICATION_URL;
+import static navigation.ApplicationURLs.LOGIN_URL;
 
-    String petStoreUrl = "http://przyklady.javastart.pl/jpetstore/";
+public class TestBase {
 
     @BeforeMethod
     public void beforeTest() {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
-        DriverUtils.navigateToPage(petStoreUrl);
-
+        DriverUtils.navigateToPage(APPLICATION_URL);
     }
 
     @AfterMethod
