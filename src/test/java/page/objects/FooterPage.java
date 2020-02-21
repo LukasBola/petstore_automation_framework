@@ -13,7 +13,7 @@ public class FooterPage {
 
     private Logger logger = LogManager.getRootLogger();
 
-    @FindBy (id = "Banner")
+    @FindBy (css = "#Banner img[src*='dog']")
     WebElement bannerAfterLogin;
 
     public FooterPage (){
