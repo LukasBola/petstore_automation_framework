@@ -1,6 +1,7 @@
 package tests;
 
 import driver.manager.DriverUtils;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import page.objects.LoginPage;
 
@@ -10,6 +11,8 @@ import static org.testng.Assert.assertEquals;
 public class FailedLoginTests extends TestBase {
 
     @Test
+    @Description("The goal of this test is to log in using invalid username and password" +
+            "and check if warning message is displayed.")
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
         DriverUtils.navigateToPage(LOGIN_URL);
 
