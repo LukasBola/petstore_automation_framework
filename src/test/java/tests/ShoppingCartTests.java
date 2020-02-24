@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 import page.objects.*;
 
@@ -7,6 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 public class ShoppingCartTests extends TestBase {
 
+    @Severity(SeverityLevel.MINOR)
     @Test
     public void addSmallAngelFishToTheCartWithoutLoginIn() {
         LandingPage landingPage = new LandingPage();
