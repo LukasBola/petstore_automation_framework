@@ -4,9 +4,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import page.objects.DriverEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +22,9 @@ public class WebDriverEventUsageExampleTests {
     public void beforeTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        DriverEventListener driverEventListener = new DriverEventListener();
+        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        driver = eventFiringWebDriver.register(driverEventListener);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.navigate().to("http://przyklady.javastart.pl/jpetstore/");
