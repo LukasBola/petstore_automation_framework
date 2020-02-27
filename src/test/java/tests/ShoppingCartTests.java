@@ -1,7 +1,9 @@
 package tests;
 
+import io.qameta.allure.Issue;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import page.objects.*;
 
@@ -9,6 +11,8 @@ import static org.testng.Assert.assertEquals;
 
 public class ShoppingCartTests extends TestBase {
 
+    @Issue("DEFECT-3")
+    @TmsLink("ID-3")
     @Severity(SeverityLevel.MINOR)
     @Test
     public void addSmallAngelFishToTheCartWithoutLoginIn() {
