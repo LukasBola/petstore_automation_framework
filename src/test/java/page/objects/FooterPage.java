@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 public class FooterPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(FooterPage.class);
 
     @FindBy (css = "#Banner img[src*='dog']")
     WebElement bannerAfterLogin;

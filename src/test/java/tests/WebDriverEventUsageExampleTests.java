@@ -8,7 +8,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page.objects.DriverEventListener;
+import driver.listeners.DriverEventListener;
 
 import java.util.concurrent.TimeUnit;
 
