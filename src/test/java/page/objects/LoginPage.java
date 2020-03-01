@@ -1,6 +1,7 @@
 package page.objects;
 
 import driver.manager.DriverManager;
+import generic.assertions.AssertWebElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +26,9 @@ public class LoginPage {
 
     @FindBy(css = "#Content li")
     private WebElement warningMessage;
+
+    @FindBy(css = "#Content ul[class='messages'] li")
+    private WebElement messageLabel;
 
     public LoginPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -61,4 +65,13 @@ public class LoginPage {
         logger.info("Returned warning message: '{}' at the login page", warningMessageText);
         return warningMessageText;
     }
+
+    @Step("Assert that warning message {warningMessage} is displayed")
+    public LoginPage assertThatWarningIsDisplayd(String warningMessage){
+        logger.info("Checking if warning message {} is displayed", warningMessage);
+        WaitForElement.waitUntilElementIsVisible(messageLabel);
+        AssertWebElement.assertThat(messageLabel).isDisplayed().hasText(warningMessage);
+        return this;
+    }
 }
+
