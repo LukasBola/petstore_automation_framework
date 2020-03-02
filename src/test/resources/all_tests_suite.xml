@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="All Pet Store Tests">
 
+    <listeners>
+        <listener class-name="utils.testng.listeners.TestListener"/>
+    </listeners>
+
     <test name="Negative Login Tests">
         <classes>
             <class name="tests.FailedLoginTests"/>
