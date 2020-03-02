@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.14.0</version>
+            <version>3.15.0</version>
             <scope>test</scope>
         </dependency>
         <!--Poniżej biblioteki konieczne do poprawnego działania Allure framework-->
@@ -39,11 +39,13 @@
             <version>${aspectj.version}</version>
         </dependency>
         <!--Biblioteka Allure-->
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.10.0</version>
         </dependency>
+
         <!--Pozostałe zależności projektowe-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

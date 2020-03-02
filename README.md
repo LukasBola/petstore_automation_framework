@@ -14,8 +14,8 @@ Also Scoop is capable of updating Allure distribution installations. To do so na
 This will check for newer versions of Allure, and update the manifest file. Then execute
 >scoop update allure
 
-
+Run tests suite via cmd using maven:
+>mvn clean test 
 
 To generate Allure html report and automatically open it in a web browser type in PowerShell:
-
 >allure serve target/allure-results

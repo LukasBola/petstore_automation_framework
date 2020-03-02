@@ -22,7 +22,7 @@ public class PositiveLoginTests extends TestBase {
         LoginPage loginPage = new LoginPage();
         loginPage
                 .typeIntoUsernameField("j2ee")
-                .typeIntoPasswordField("j2ee")
+                .typeIntoPasswordField("wrongPassword")
                 .clickLoginButton()
                 .assertThatDogBannerIsDisplayed();
     }
