@@ -8,21 +8,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitForElement;
 
-public class AngelfishListPage {
-
-    private Logger logger = LogManager.getLogger(AngelfishListPage.class);
+public class AngelfishListPage extends BasePage {
 
     @FindBy(css = "a.Button[href$='EST-2']")
     WebElement smallAngelFishAddToCartButton;
 
-    public AngelfishListPage( ){
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
-
     public ShoppingCartPage clickOnSmallAngelFishAddToCartButton() {
         WaitForElement.waitUntilElementIsClickable(smallAngelFishAddToCartButton);
         smallAngelFishAddToCartButton.click();
-        logger.info("Clicked on small Angelfish at Angelfish list page and clicked on Add to cart button at Angelfish list page.");
+        log().info("Clicked on small Angelfish at Angelfish list page and clicked on Add to cart button at Angelfish list page.");
         return new ShoppingCartPage();
     }
 }

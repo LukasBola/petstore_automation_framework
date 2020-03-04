@@ -8,21 +8,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitForElement;
 
-public class ShoppingCartPage {
-
-    private Logger logger = LogManager.getLogger(ShoppingCartPage.class);
+public class ShoppingCartPage extends BasePage {
 
     @FindBy(css = "#Cart a[href*='newOrderForm']")
     WebElement proceedToCheckOutButton;
 
-    public ShoppingCartPage() {
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
-
     public CheckoutPage clickOnProceedToCheckOutButton() {
         WaitForElement.waitUntilElementIsClickable(proceedToCheckOutButton);
         proceedToCheckOutButton.click();
-        logger.info("Clicked on Proceed to checkout button at the Shopping cart page.");
+        log().info("Clicked on Proceed to checkout button at the Shopping cart page.");
         return new CheckoutPage();
     }
 }

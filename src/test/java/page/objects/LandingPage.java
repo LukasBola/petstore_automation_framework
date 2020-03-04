@@ -10,22 +10,16 @@ import waits.WaitForElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LandingPage {
-
-    private Logger logger = LogManager.getLogger(LandingPage.class);
+public class LandingPage extends BasePage {
 
     @FindBy(css = "#Content a")
     WebElement enterStoreLink;
-
-    public LandingPage() {
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
 
     @Step("Click on Enter Store link at Landing Page")
     public TopMenuPage clickOnEnterStoreLink() {
         WaitForElement.waitUntilElementIsClickable(enterStoreLink);
         enterStoreLink.click();
-        logger.info("Clicked on enter store link.");
+        log().info("Clicked on enter store link.");
         return new TopMenuPage();
     }
 }

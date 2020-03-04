@@ -11,9 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import sun.rmi.runtime.Log;
 import waits.WaitForElement;
 
-public class LoginPage {
-
-    private Logger logger = LogManager.getLogger(LoginPage.class);
+public class LoginPage extends BasePage {
 
     @FindBy(css = "#Catalog input[name*='username']")
     private WebElement usernameField;
@@ -30,16 +28,12 @@ public class LoginPage {
     @FindBy(css = "#Content ul[class='messages'] li")
     private WebElement messageLabel;
 
-    public LoginPage() {
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
-
     @Step("Type into User Name Field {username}")
     public LoginPage typeIntoUsernameField(String username) {
         WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.clear();
         usernameField.sendKeys(username);
-        logger.info("Typed user name: '{}' in username field.", username);
+        log().info("Typed user name: '{}' in username field.", username);
         return this;
     }
 
@@ -47,14 +41,14 @@ public class LoginPage {
     public LoginPage typeIntoPasswordField(String password) {
         passwordField.clear();
         passwordField.sendKeys(password);
-        logger.info("Typed password: '{}' in password field.", password);
+        log().info("Typed password: '{}' in password field.", password);
         return this;
     }
 
     @Step("Click on Login Button")
     public FooterPage clickLoginButton() {
         loginButton.click();
-        logger.info("Clicked Login button at the login page.");
+        log().info("Clicked Login button at the login page.");
         return new FooterPage();
     }
 
@@ -62,13 +56,13 @@ public class LoginPage {
     public String getWarningMessage() {
         WaitForElement.waitUntilElementIsVisible(warningMessage);
         String warningMessageText = warningMessage.getText();
-        logger.info("Returned warning message: '{}' at the login page", warningMessageText);
+        log().info("Returned warning message: '{}' at the login page", warningMessageText);
         return warningMessageText;
     }
 
     @Step("Assert that warning message {warningMessage} is displayed")
-    public LoginPage assertThatWarningIsDisplayd(String warningMessage){
-        logger.info("Checking if warning message {} is displayed", warningMessage);
+    public LoginPage assertThatWarningIsDisplayd(String warningMessage) {
+        log().info("Checking if warning message {} is displayed", warningMessage);
         WaitForElement.waitUntilElementIsVisible(messageLabel);
         AssertWebElement.assertThat(messageLabel).isDisplayed().hasText(warningMessage);
         return this;
